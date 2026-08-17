@@ -1,6 +1,6 @@
 export const personalDetails = {
   name: "Abhisar Varshney",
-  role: "Aspiring Game & Full-Stack Developer",
+  role: "Full-Stack Web Developer",
   dob: "14-12-2004",
   email: "abhisarvasrhney2004@gmail.com",
   phone: "8799721618",
@@ -8,12 +8,12 @@ export const personalDetails = {
   languages: ["Hindi", "English"],
   linkedin: "https://www.linkedin.com/in/abhisar-varshney-313a65362/",
   github: "https://github.com/Abhixarvar",
-  objective: "Passionate about game development and eager to learn industry tools like C++, Unity or Unreal Engine. Seeking a beginner-friendly position where I can apply my growing knowledge and continue developing real-world skills.",
+  objective: "Passionate about web development and building responsive, full-stack web applications using modern tools like JavaScript, HTML/CSS, MongoDB, and Vercel. Seeking a position where I can apply my growing knowledge and continue developing real-world software skills.",
   level: 20,
   xp: 85,
   stats: [
     { label: "Projects Completed", value: "5+", icon: "Sparkles", color: "emerald" },
-    { label: "Core Focus", value: "Game Dev & Web", icon: "Gamepad2", color: "cyan" },
+    { label: "Core Focus", value: "Web Dev", icon: "Code2", color: "cyan" },
     { label: "Degree", value: "BCA (2024-27)", icon: "GraduationCap", color: "amber" },
     { label: "Certifications", value: "NPTEL & Anthropic", icon: "Award", color: "purple" }
   ]
@@ -24,7 +24,7 @@ export const skillsData = [
     category: "Languages & Core",
     icon: "Code2",
     items: [
-      { name: "C / C++", level: "Intermediate", icon: "Cpu", rarity: "diamond", desc: "Core language logic & OOP game logic foundations" },
+      { name: "C / C++", level: "Intermediate", icon: "Cpu", rarity: "diamond", desc: "Core programming logic & OOP data structure foundations" },
       { name: "JavaScript", level: "Advanced", icon: "Zap", rarity: "emerald", desc: "Modern ES6+, DOM manipulation & Web Apps" },
       { name: "Python", level: "Intermediate", icon: "Terminal", rarity: "gold", desc: "Scripting, problem solving & data structures" },
       { name: "HTML5 & CSS3", level: "Advanced", icon: "Layout", rarity: "emerald", desc: "Responsive UIs, modern styling & CSS animations" }
@@ -46,7 +46,7 @@ export const skillsData = [
     items: [
       { name: "Claude Code", level: "Certified", icon: "Brain", rarity: "purple", desc: "Anthropic Claude 101 certified prompt & AI development workflow" },
       { name: "Gemini AI", level: "Proficient", icon: "Sparkles", rarity: "purple", desc: "Multi-modal model prompting & system architecture" },
-      { name: "ChatGPT", level: "Proficient", icon: "MessageSquare", rarity: "purple", desc: "AI assisted debugging & game design logic" },
+      { name: "ChatGPT", level: "Proficient", icon: "MessageSquare", rarity: "purple", desc: "AI assisted debugging & web application architecture" },
       { name: "Git & GitHub", level: "Intermediate", icon: "GitBranch", rarity: "diamond", desc: "Version control & repository management" }
     ]
   }
@@ -96,7 +96,7 @@ export const projectsData = [
     id: "dairy-management",
     title: "Dairy Management System",
     tagline: "Console Application built purely in C++",
-    category: "Game & C++",
+    category: "C++ & Tools",
     rarity: "Redstone Item",
     rarityColor: "#EF4444",
     description: "A structured C++ application created to streamline dairy operations, record management, stock tracking, and billing calculations using object-oriented C++ principles.",
@@ -206,8 +206,8 @@ export const achievementsData = [
 ];
 
 export const softSkillsData = [
-  { name: "Teamwork & Collaboration", icon: "Users", desc: "Proven ability to collaborate in team projects, shared repos, and group coding challenges." },
-  { name: "Creativity & Game Design", icon: "Sparkles", desc: "Out-of-the-box approach to user interactions, game mechanics, and innovative project ideas." },
+  { name: "Teamwork & Collaboration", icon: "Users", desc: "Proven ability to collaborate in team projects, shared repos, and group web development challenges." },
+  { name: "Creativity & UI Design", icon: "Sparkles", desc: "Out-of-the-box approach to web user experiences, dynamic components, and innovative web application ideas." },
   { name: "Problem Solving", icon: "Brain", desc: "Analytical mindset focused on breaking down complex bugs and logic into clean solutions." },
-  { name: "Adaptability", icon: "RefreshCw", desc: "Quick learner passionate about mastering Unity, Unreal Engine, and emerging AI tools." }
+  { name: "Adaptability", icon: "RefreshCw", desc: "Quick learner passionate about mastering modern web frameworks, React, Node.js, and emerging AI dev tools." }
 ];

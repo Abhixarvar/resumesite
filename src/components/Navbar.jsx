@@ -67,14 +67,14 @@ export default function Navbar({ activeSection, scrollProgress }) {
               justifyContent: 'center',
               background: 'radial-gradient(circle, #2563EB 0%, #0F172A 100%)'
             }}>
-              <Gamepad2 size={22} color="#38BDF8" />
+              <Code2 size={22} color="#38BDF8" />
             </div>
             <div>
               <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.3px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 {personalDetails.name}
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                Game & Software Dev
+                Full-Stack Web Dev
               </div>
             </div>
           </a>

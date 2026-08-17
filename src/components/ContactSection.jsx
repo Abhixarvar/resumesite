@@ -52,7 +52,7 @@ export default function ContactSection({ onTriggerAdvancement }) {
             Connect & <span className="text-gradient-emerald">Collaborate</span>
           </h2>
           <p className="section-subtitle">
-            Looking for an enthusiastic beginner game & software developer? Drop a message or reach out directly!
+            Looking for an enthusiastic full-stack web developer? Drop a message or reach out directly!
           </p>
         </div>
 

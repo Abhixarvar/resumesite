@@ -12,7 +12,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModalProject, setActiveModalProject] = useState(null);
 
-  const categories = ['All', 'Web Apps', 'Game & C++', 'AI Systems'];
+  const categories = ['All', 'Web Apps', 'AI Systems', 'C++ & Tools'];
 
   const filteredProjects = projectsData.filter(proj => {
     const matchesCategory = selectedCategory === 'All' || proj.category === selectedCategory;

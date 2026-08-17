@@ -216,7 +216,7 @@ export default function Hero() {
                 {personalDetails.name}
               </h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--diamond-cyan)', marginBottom: '1.5rem', fontFamily: 'var(--font-pixel)' }}>
-                GAME & SOFTWARE DEVELOPER
+                FULL-STACK WEB DEVELOPER
               </p>
 
               {/* 4 Player Stats Grid */}
