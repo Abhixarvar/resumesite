@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Gamepad2, Shield, Code, Sparkles, Send } from 'lucide-react';
+import { Gamepad2, Shield, Code2, Sparkles, Send } from 'lucide-react';
 
 export default function Navbar({ activeSection, scrollProgress }) {
   const [scrolled, setScrolled] = useState(false);
