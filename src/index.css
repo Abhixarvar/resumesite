@@ -1,0 +1,294 @@
+/* ==========================================================================
+   SUBTLE MINECRAFT GAMING DESIGN SYSTEM - ABHISAR VARSHNEY PORTFOLIO
+   ========================================================================== */
+
+:root {
+  /* Theme Base Palette (Dark Obsidian / Slate) */
+  --bg-main: #0B0E14;
+  --bg-surface: #131722;
+  --bg-card: #1B202D;
+  --bg-card-hover: #242B3C;
+  --bg-slot: #0F121A;
+  
+  /* Minecraft Accents */
+  --emerald-green: #10B981;
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --diamond-cyan: #38BDF8;
+  --diamond-glow: rgba(56, 189, 248, 0.25);
+  --gold-amber: #F59E0B;
+  --gold-glow: rgba(245, 158, 11, 0.25);
+  --redstone-red: #EF4444;
+  --netherite-purple: #A855F7;
+
+  /* Text Colors */
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --text-emerald: #34D399;
+  --text-diamond: #7DD3FC;
+
+  /* Borders & Inset Highlights */
+  --border-dark: #0D1017;
+  --border-light: #2E364A;
+  --border-accent: rgba(56, 189, 248, 0.3);
+
+  /* Font Families */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pixel: 'Silkscreen', 'Press Start 2P', cursive, monospace;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* Subtle Pixel Grid Texture */
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #2D3748;
+  border: 2px solid var(--bg-main);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald-green);
+}
+
+/* Utility Typography Classes */
+.font-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: -0.5px;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #34D399 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-diamond {
+  background: linear-gradient(135deg, #38BDF8 0%, #2563EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   MINECRAFT ITEM FRAME & BEVEL CARD STYLES
+   ========================================================================== */
+
+.mc-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.mc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.mc-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--diamond-cyan);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 15px var(--diamond-glow);
+}
+
+/* Minecraft Inventory Slot Container */
+.mc-slot {
+  background: var(--bg-slot);
+  border: 2px solid #000;
+  border-top-color: #080A0E;
+  border-left-color: #080A0E;
+  border-bottom-color: #2D3748;
+  border-right-color: #2D3748;
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.8);
+  transition: all 0.2s ease;
+}
+
+.mc-slot:hover {
+  border-color: var(--emerald-green);
+  box-shadow: inset 0 0 10px var(--emerald-glow), 0 0 12px var(--emerald-glow);
+}
+
+/* Minecraft Button Style */
+.mc-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #FFF;
+  background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 100%);
+  border: 2px solid #1E40AF;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.mc-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.1);
+}
+
+.mc-button-emerald {
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+  border-color: #047857;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.mc-button-emerald:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mc-button-secondary {
+  background: linear-gradient(180deg, #1F2937 0%, #111827 100%);
+  border-color: #374151;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mc-button-secondary:hover {
+  border-color: #6B7280;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* XP Level Badge */
+.xp-level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #15803D;
+  border: 2px solid #55FF55;
+  color: #55FF55;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-shadow: 1px 1px 0 #000;
+  box-shadow: 0 0 10px rgba(85, 255, 85, 0.4);
+}
+
+/* ADVANCEMENT UNLOCKED TOAST */
+.advancement-toast {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 999;
+  background: rgba(19, 23, 34, 0.95);
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--gold-amber);
+  border-radius: 10px;
+  padding: 0.85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--gold-glow);
+  animation: slideInToast 0.4s cubic-bezier(0.16, 1, 0.3, 1), fadeOutToast 0.5s ease 3.5s forwards;
+}
+
+@keyframes slideInToast {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOutToast {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); visibility: hidden; }
+}
+
+/* SECTION TITLES */
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--emerald-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0.5rem auto 0 auto;
+}
+
+/* RESPONSIVE LAYOUT HELPERS */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+}
