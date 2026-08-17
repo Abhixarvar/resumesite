@@ -72,7 +72,6 @@ export default function Navbar({ activeSection, scrollProgress }) {
             <div>
               <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.3px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 {personalDetails.name}
-                <span className="xp-level-badge">LVL {personalDetails.level}</span>
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                 Game & Software Dev

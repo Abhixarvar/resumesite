@@ -186,14 +186,15 @@ export default function Hero() {
                   justifyContent: 'center',
                   overflow: 'hidden'
                 }}>
-                  <div style={{
-                    fontSize: '4.5rem',
-                    lineHeight: 1,
-                    userSelect: 'none',
-                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
-                  }}>
-                    🧙‍♂️
-                  </div>
+                  <img 
+                    src="/profile.jpg" 
+                    alt="Abhisar Varshney" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }} 
+                  />
                 </div>
                 <div style={{
                   position: 'absolute',
@@ -215,7 +216,7 @@ export default function Hero() {
                 {personalDetails.name}
               </h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--diamond-cyan)', marginBottom: '1.5rem', fontFamily: 'var(--font-pixel)' }}>
-                LEVEL {personalDetails.level} DEVELOPER
+                GAME & SOFTWARE DEVELOPER
               </p>
 
               {/* 4 Player Stats Grid */}
