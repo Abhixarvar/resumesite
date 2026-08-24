@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Github, Code2, Send, ExternalLink, GitPullRequest } from 'lucide-react';
+import { Github, Send, ExternalLink } from 'lucide-react';
 
 export default function Navbar({ activeSection, scrollProgress }) {
   const [scrolled, setScrolled] = useState(false);
@@ -94,7 +94,7 @@ export default function Navbar({ activeSection, scrollProgress }) {
             {[
               { id: 'hero', label: 'Overview' },
               { id: 'skills', label: 'Skills & Stack' },
-              { id: 'projects', label: 'Repositories' },
+              { id: 'projects', label: 'Projects' },
               { id: 'quest', label: 'Education' },
               { id: 'achievements', label: 'Certifications' },
               { id: 'contact', label: 'Contact' }

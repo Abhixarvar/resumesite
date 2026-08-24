@@ -145,7 +145,7 @@ export default function Hero() {
                   <FileCode size={16} color="var(--gh-fg-muted)" />
                   <span className="font-mono">AbhisarVarshney / README.md</span>
                 </div>
-                <span className="gh-tag">Special Repository</span>
+                <span className="gh-tag">Developer Overview</span>
               </div>
 
               {/* README Body Content */}
@@ -183,7 +183,7 @@ export default function Hero() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
                   <a href="#projects" className="gh-btn gh-btn-primary">
                     <FolderGit2 size={16} />
-                    <span>Explore Repositories</span>
+                    <span>Explore Projects</span>
                   </a>
                   <a href="#contact" className="gh-btn gh-btn-outline">
                     <Mail size={16} />
@@ -212,7 +212,6 @@ export default function Hero() {
                 paddingBottom: '4px'
               }}>
                 {Array.from({ length: 180 }).map((_, idx) => {
-                  // Simulate realistic contribution heat levels (0 to 4)
                   const levels = [0, 1, 1, 2, 0, 3, 1, 4, 2, 1, 3, 0, 2, 4, 1, 2];
                   const lvl = levels[idx % levels.length];
                   const bgColors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];

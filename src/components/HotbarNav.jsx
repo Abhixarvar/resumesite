@@ -5,7 +5,7 @@ export default function HotbarNav({ activeSection, onSelectSection }) {
   const slots = [
     { id: 'hero', number: '1', name: 'Overview', icon: Github, color: '#58a6ff' },
     { id: 'skills', number: '2', name: 'Skills & Stack', icon: Code2, color: '#3fb950' },
-    { id: 'projects', number: '3', name: 'Repositories', icon: FolderGit2, color: '#d29922' },
+    { id: 'projects', number: '3', name: 'Projects', icon: FolderGit2, color: '#d29922' },
     { id: 'quest', number: '4', name: 'Education', icon: GraduationCap, color: '#bc8cff' },
     { id: 'achievements', number: '5', name: 'Certifications', icon: Award, color: '#f78166' },
     { id: 'contact', number: '6', name: 'Contact', icon: Send, color: '#39d353' }

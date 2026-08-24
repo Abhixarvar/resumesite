@@ -25,7 +25,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
   const handleCardClick = (project) => {
     setActiveModalProject(project);
     if (onTriggerAdvancement) {
-      onTriggerAdvancement(`Inspected repository: ${project.title}`);
+      onTriggerAdvancement(`Inspected project: ${project.title}`);
     }
   };
 
@@ -41,7 +41,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
         <div className="section-header">
           <div className="section-tag">
             <FolderGit2 size={14} />
-            <span>PINNED REPOSITORIES & CREATIONS</span>
+            <span>FEATURED PROJECTS & CREATIONS</span>
           </div>
           <h2 className="section-title">
             Featured <span style={{ color: 'var(--gh-blue)' }}>Software Projects</span>
@@ -98,7 +98,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
             }} />
             <input
               type="text"
-              placeholder="Find a repository..."
+              placeholder="Search projects..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               style={{
@@ -115,7 +115,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
           </div>
         </div>
 
-        {/* Repositories Grid */}
+        {/* Projects Grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
@@ -138,7 +138,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
                 }}
               >
                 <div>
-                  {/* Top Bar: Repo Name & Visibility Tag */}
+                  {/* Top Bar: Project Name & Visibility Tag */}
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
