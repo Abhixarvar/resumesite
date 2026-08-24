@@ -1,9 +1,9 @@
 import React from 'react';
 import { educationData } from '../data/resumeData';
-import { GraduationCap, BookOpen, CheckCircle, GitCommit, Calendar, Award } from 'lucide-react';
+import { GraduationCap, BookOpen, CheckCircle, GitCommit, Trophy, Award } from 'lucide-react';
 
 const iconMap = {
-  GraduationCap, BookOpen, CheckCircle, GitCommit
+  GraduationCap, BookOpen, CheckCircle, Trophy, Award
 };
 
 export default function EducationTimeline() {
@@ -29,37 +29,38 @@ export default function EducationTimeline() {
           </p>
         </div>
 
-        {/* Timeline Git Commit Path */}
+        {/* Timeline Container with Pixel-Perfect Alignment */}
         <div style={{
-          maxWidth: '820px',
+          maxWidth: '860px',
           margin: '0 auto',
           position: 'relative',
-          paddingLeft: '2rem'
+          paddingLeft: '3.5rem' /* 56px space for timeline line and nodes */
         }}>
-          {/* Vertical Connecting Git Commit Branch Line */}
+          {/* Vertical Connecting Line (Centered at 21px) */}
           <div style={{
             position: 'absolute',
-            left: '11px',
-            top: '24px',
-            bottom: '24px',
+            left: '20px',
+            top: '20px',
+            bottom: '20px',
             width: '2px',
-            background: 'var(--gh-border-default)'
+            background: 'var(--gh-border-default)',
+            zIndex: 1
           }} />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
             {educationData.map((edu, idx) => {
               const IconComp = iconMap[edu.icon] || GraduationCap;
 
               return (
                 <div key={idx} style={{ position: 'relative' }}>
                   
-                  {/* Git Commit Node Marker */}
+                  {/* Timeline Circle Node Marker (42px wide, centered at 21px) */}
                   <div style={{
                     position: 'absolute',
-                    left: '-2.4rem',
-                    top: '1.2rem',
-                    width: '26px',
-                    height: '26px',
+                    left: '-3.5rem', /* -56px relative to card */
+                    top: '14px',
+                    width: '42px',
+                    height: '42px',
                     borderRadius: '50%',
                     background: 'var(--gh-bg-subtle)',
                     border: '2px solid var(--gh-blue)',
@@ -67,9 +68,10 @@ export default function EducationTimeline() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: 'var(--gh-blue)',
-                    zIndex: 2
+                    zIndex: 2,
+                    boxShadow: '0 0 0 4px var(--gh-bg-default)' /* Masks background line cleanly */
                   }}>
-                    <GitCommit size={14} />
+                    <IconComp size={18} />
                   </div>
 
                   {/* Education Card */}
@@ -105,7 +107,8 @@ export default function EducationTimeline() {
                       marginBottom: '0.65rem',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.75rem'
+                      gap: '0.75rem',
+                      flexWrap: 'wrap'
                     }}>
                       <span>{edu.institution}</span>
                       {edu.score && (
@@ -135,6 +138,14 @@ export default function EducationTimeline() {
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          #quest .container > div {
+            paddingLeft: 2.75rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
