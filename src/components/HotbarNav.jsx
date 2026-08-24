@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
-import { Gamepad2, Code2, Sparkles, GraduationCap, Award, Send } from 'lucide-react';
+import { Github, Code2, FolderGit2, GraduationCap, Award, Send } from 'lucide-react';
 
 export default function HotbarNav({ activeSection, onSelectSection }) {
   const slots = [
-    { id: 'hero', number: '1', name: 'Overview', icon: Gamepad2, color: '#38BDF8' },
-    { id: 'skills', number: '2', name: 'Skills Inventory', icon: Code2, color: '#10B981' },
-    { id: 'projects', number: '3', name: 'Projects Vault', icon: Sparkles, color: '#F59E0B' },
-    { id: 'quest', number: '4', name: 'Academic Quest', icon: GraduationCap, color: '#A855F7' },
-    { id: 'achievements', number: '5', name: 'Advancements', icon: Award, color: '#EF4444' },
-    { id: 'contact', number: '6', name: 'Dispatch Beacon', icon: Send, color: '#55FF55' }
+    { id: 'hero', number: '1', name: 'Overview', icon: Github, color: '#58a6ff' },
+    { id: 'skills', number: '2', name: 'Skills & Stack', icon: Code2, color: '#3fb950' },
+    { id: 'projects', number: '3', name: 'Repositories', icon: FolderGit2, color: '#d29922' },
+    { id: 'quest', number: '4', name: 'Education', icon: GraduationCap, color: '#bc8cff' },
+    { id: 'achievements', number: '5', name: 'Certifications', icon: Award, color: '#f78166' },
+    { id: 'contact', number: '6', name: 'Contact', icon: Send, color: '#39d353' }
   ];
 
   // Global Hotkey Listener (Keys 1 - 6)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Don't trigger if user is typing inside an input or textarea
       if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
       
       const keyNum = parseInt(e.key, 10);
@@ -39,18 +38,14 @@ export default function HotbarNav({ activeSection, onSelectSection }) {
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 1000,
-      background: 'rgba(15, 18, 26, 0.92)',
+      background: 'rgba(22, 27, 34, 0.95)',
       backdropFilter: 'blur(16px)',
-      border: '2px solid #000',
-      borderTopColor: '#2D3748',
-      borderLeftColor: '#2D3748',
-      borderBottomColor: '#080A0E',
-      borderRightColor: '#080A0E',
-      borderRadius: '12px',
-      padding: '6px',
-      boxShadow: '0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)'
+      border: '1px solid var(--gh-border-default)',
+      borderRadius: '24px',
+      padding: '4px 8px',
+      boxShadow: '0 8px 30px rgba(0,0,0,0.6)'
     }}>
-      <div style={{ display: 'flex', gap: '6px' }}>
+      <div style={{ display: 'flex', gap: '4px' }}>
         {slots.map(slot => {
           const IconComp = slot.icon;
           const isActive = activeSection === slot.id;
@@ -60,50 +55,38 @@ export default function HotbarNav({ activeSection, onSelectSection }) {
               key={slot.id}
               href={`#${slot.id}`}
               onClick={() => onSelectSection(slot.id)}
-              className="mc-slot"
               style={{
-                width: '46px',
-                height: '46px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
+                gap: '0.4rem',
+                padding: '0.45rem 0.85rem',
+                borderRadius: '18px',
                 textDecoration: 'none',
-                borderColor: isActive ? slot.color : undefined,
-                background: isActive ? 'rgba(255,255,255,0.08)' : 'var(--bg-slot)',
-                boxShadow: isActive ? `inset 0 0 10px ${slot.color}33, 0 0 12px ${slot.color}44` : undefined
+                fontSize: '0.8rem',
+                fontWeight: 500,
+                color: isActive ? 'var(--gh-fg-heading)' : 'var(--gh-fg-muted)',
+                background: isActive ? 'rgba(88, 166, 255, 0.15)' : 'transparent',
+                border: isActive ? '1px solid rgba(88, 166, 255, 0.3)' : '1px solid transparent',
+                transition: 'all 0.15s ease'
               }}
               title={`[${slot.number}] ${slot.name}`}
             >
-              {/* Slot Key Number */}
-              <span style={{
-                position: 'absolute',
-                top: '2px',
-                left: '4px',
-                fontSize: '0.62rem',
-                fontFamily: 'var(--font-pixel)',
-                color: isActive ? slot.color : 'var(--text-muted)'
-              }}>
-                {slot.number}
+              <IconComp size={16} color={isActive ? slot.color : 'var(--gh-fg-muted)'} />
+              <span className="floating-nav-label" style={{ display: isActive ? 'inline' : 'none' }}>
+                {slot.name}
               </span>
-
-              {/* Slot Icon */}
-              <IconComp size={20} color={isActive ? slot.color : 'var(--text-secondary)'} />
-
-              {/* Active Selection Indicator Box */}
-              {isActive && (
-                <div style={{
-                  position: 'absolute',
-                  inset: '-2px',
-                  border: `2px solid ${slot.color}`,
-                  borderRadius: '8px',
-                  pointerEvents: 'none'
-                }} />
-              )}
             </a>
           );
         })}
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .floating-nav-label {
+            display: none !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

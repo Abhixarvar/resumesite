@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Copy, Check, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Copy, Check, MessageSquare, GitPullRequest } from 'lucide-react';
 
 export default function ContactSection({ onTriggerAdvancement }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -18,7 +18,7 @@ export default function ContactSection({ onTriggerAdvancement }) {
       setTimeout(() => setCopiedPhone(false), 2000);
     }
     if (onTriggerAdvancement) {
-      onTriggerAdvancement(`Copied ${type.toUpperCase()} to Clipboard!`);
+      onTriggerAdvancement(`Copied ${type.toUpperCase()} to clipboard!`);
     }
   };
 
@@ -26,7 +26,7 @@ export default function ContactSection({ onTriggerAdvancement }) {
     e.preventDefault();
     setFormSent(true);
     if (onTriggerAdvancement) {
-      onTriggerAdvancement('Sent Dispatch Signal to Abhisar!');
+      onTriggerAdvancement('Message dispatched successfully!');
     }
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' });
@@ -36,8 +36,8 @@ export default function ContactSection({ onTriggerAdvancement }) {
 
   return (
     <section id="contact" style={{
-      padding: '100px 0',
-      background: 'rgba(11, 14, 20, 0.7)',
+      padding: '90px 0',
+      background: 'var(--gh-bg-default)',
       position: 'relative'
     }}>
       <div className="container">
@@ -45,240 +45,209 @@ export default function ContactSection({ onTriggerAdvancement }) {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <Sparkles size={14} />
-            <span>DISPATCH & CHAT BEACON</span>
+            <GitPullRequest size={14} />
+            <span>GET IN TOUCH & DISCUSSIONS</span>
           </div>
           <h2 className="section-title">
-            Connect & <span className="text-gradient-emerald">Collaborate</span>
+            Connect & <span style={{ color: 'var(--gh-green-text)' }}>Collaborate</span>
           </h2>
           <p className="section-subtitle">
-            Looking for an enthusiastic full-stack web developer? Drop a message or reach out directly!
+            Looking for an enthusiastic full-stack web developer? Drop a message or reach out directly via email or LinkedIn!
           </p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '2.5rem',
+          gridTemplateColumns: '1fr 1.1fr',
+          gap: '2rem',
           alignItems: 'start'
         }} className="contact-grid">
           
           {/* Left Column: Direct Contact Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             
             {/* Email Card */}
-            <div className="mc-card" style={{ padding: '1.5rem' }}>
+            <div className="gh-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div className="mc-slot" style={{ width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--emerald-green)' }}>
-                    <Mail size={22} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '6px', background: 'var(--gh-bg-inset)', border: '1px solid var(--gh-border-default)', display: 'flex', alignItems: 'center', justify: 'center', color: 'var(--gh-green-text)' }}>
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Email Address</div>
-                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{personalDetails.email}</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--gh-fg-muted)', textTransform: 'uppercase', fontWeight: 600 }}>Email Address</div>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--gh-fg-heading)' }}>{personalDetails.email}</div>
                   </div>
                 </div>
 
                 <button
                   onClick={() => copyToClipboard(personalDetails.email, 'email')}
-                  style={{
-                    background: 'var(--bg-slot)',
-                    border: '1px solid var(--border-light)',
-                    color: copiedEmail ? 'var(--emerald-green)' : 'var(--text-secondary)',
-                    padding: '0.5rem 0.8rem',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.8rem',
-                    transition: 'all 0.2s ease'
-                  }}
+                  className="gh-btn"
+                  style={{ fontSize: '0.78rem' }}
                 >
-                  {copiedEmail ? <Check size={16} /> : <Copy size={16} />}
-                  <span>{copiedEmail ? 'Copied!' : 'Copy'}</span>
+                  {copiedEmail ? <Check size={14} color="var(--gh-green-text)" /> : <Copy size={14} />}
+                  <span>{copiedEmail ? 'Copied' : 'Copy'}</span>
                 </button>
               </div>
             </div>
 
             {/* Phone Card */}
-            <div className="mc-card" style={{ padding: '1.5rem' }}>
+            <div className="gh-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div className="mc-slot" style={{ width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--diamond-cyan)' }}>
-                    <Phone size={22} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '6px', background: 'var(--gh-bg-inset)', border: '1px solid var(--gh-border-default)', display: 'flex', alignItems: 'center', justify: 'center', color: 'var(--gh-blue)' }}>
+                    <Phone size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Phone Number</div>
-                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{personalDetails.phone}</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--gh-fg-muted)', textTransform: 'uppercase', fontWeight: 600 }}>Phone Number</div>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--gh-fg-heading)' }}>{personalDetails.phone}</div>
                   </div>
                 </div>
 
                 <button
                   onClick={() => copyToClipboard(personalDetails.phone, 'phone')}
-                  style={{
-                    background: 'var(--bg-slot)',
-                    border: '1px solid var(--border-light)',
-                    color: copiedPhone ? 'var(--emerald-green)' : 'var(--text-secondary)',
-                    padding: '0.5rem 0.8rem',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.8rem',
-                    transition: 'all 0.2s ease'
-                  }}
+                  className="gh-btn"
+                  style={{ fontSize: '0.78rem' }}
                 >
-                  {copiedPhone ? <Check size={16} /> : <Copy size={16} />}
-                  <span>{copiedPhone ? 'Copied!' : 'Copy'}</span>
+                  {copiedPhone ? <Check size={14} color="var(--gh-green-text)" /> : <Copy size={14} />}
+                  <span>{copiedPhone ? 'Copied' : 'Copy'}</span>
                 </button>
               </div>
             </div>
 
-            {/* Address Card */}
-            <div className="mc-card" style={{ padding: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div className="mc-slot" style={{ width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-amber)' }}>
-                  <MapPin size={22} />
+            {/* Location Tag Card (Clean - Address purged) */}
+            <div className="gh-card" style={{ padding: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                <div style={{ width: '38px', height: '38px', borderRadius: '6px', background: 'var(--gh-bg-inset)', border: '1px solid var(--gh-border-default)', display: 'flex', alignItems: 'center', justify: 'center', color: 'var(--gh-gold)' }}>
+                  <MapPin size={18} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Location & Base</div>
-                  <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-primary)' }}>{personalDetails.address}</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--gh-fg-muted)', textTransform: 'uppercase', fontWeight: 600 }}>Location</div>
+                  <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--gh-fg-heading)' }}>{personalDetails.location}</div>
                 </div>
               </div>
             </div>
 
             {/* Social Buttons */}
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <a href={personalDetails.linkedin} target="_blank" rel="noopener noreferrer" className="mc-card" style={{
-                flex: 1,
-                padding: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.6rem',
-                textDecoration: 'none',
-                color: '#38BDF8',
-                fontWeight: 700
-              }}>
-                <Linkedin size={20} />
-                <span>LinkedIn</span>
+            <div style={{ display: 'flex', gap: '0.8rem' }}>
+              <a href={personalDetails.github} target="_blank" rel="noopener noreferrer" className="gh-btn" style={{ flex: 1, justifyContent: 'center', padding: '0.65rem' }}>
+                <Github size={18} />
+                <span>GitHub Profile</span>
               </a>
 
-              <a href={personalDetails.github} target="_blank" rel="noopener noreferrer" className="mc-card" style={{
-                flex: 1,
-                padding: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.6rem',
-                textDecoration: 'none',
-                color: '#FFF',
-                fontWeight: 700
-              }}>
-                <Github size={20} />
-                <span>GitHub</span>
+              <a href={personalDetails.linkedin} target="_blank" rel="noopener noreferrer" className="gh-btn" style={{ flex: 1, justifyContent: 'center', color: 'var(--gh-blue)', padding: '0.65rem' }}>
+                <Linkedin size={18} />
+                <span>LinkedIn Profile</span>
               </a>
             </div>
 
           </div>
 
-          {/* Right Column: Contact Message Form */}
-          <div className="mc-card" style={{ padding: '2rem' }}>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <MessageSquare size={20} color="var(--emerald-green)" />
-              <span>Send Direct Signal</span>
-            </h3>
-
-            {formSent ? (
-              <div className="mc-slot" style={{ padding: '2rem', textAlign: 'center', borderColor: 'var(--emerald-green)' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>✉️</div>
-                <h4 style={{ color: 'var(--emerald-green)', fontWeight: 800, fontSize: '1.2rem', marginBottom: '0.5rem' }}>
-                  Dispatch Delivered!
-                </h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>
-                  Thank you for reaching out! Abhisar will respond to your message as soon as possible.
-                </p>
+          {/* Right Column: GitHub Issue Style Message Form */}
+          <div className="gh-card">
+            <div className="gh-box-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--gh-fg-heading)' }}>
+                <MessageSquare size={16} color="var(--gh-green-text)" />
+                <span>Send Direct Message</span>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                    YOUR NAME
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Steve / Alex"
-                    value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    style={{
-                      width: '100%',
-                      background: 'var(--bg-slot)',
-                      border: '2px solid var(--border-light)',
-                      borderRadius: '8px',
-                      padding: '0.75rem 1rem',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
+              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--gh-fg-muted)' }}>contact.dispatch</span>
+            </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                    YOUR EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@minecraft.net"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      background: 'var(--bg-slot)',
-                      border: '2px solid var(--border-light)',
-                      borderRadius: '8px',
-                      padding: '0.75rem 1rem',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
+            <div style={{ padding: '1.5rem' }}>
+              {formSent ? (
+                <div style={{
+                  padding: '2rem',
+                  textAlign: 'center',
+                  background: 'var(--gh-bg-inset)',
+                  border: '1px solid var(--gh-green-text)',
+                  borderRadius: '6px'
+                }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✅</div>
+                  <h4 style={{ color: 'var(--gh-green-text)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.3rem' }}>
+                    Message Dispatched Successfully!
+                  </h4>
+                  <p style={{ color: 'var(--gh-fg-muted)', fontSize: '0.85rem' }}>
+                    Thank you for reaching out. Abhisar will get back to you as soon as possible.
+                  </p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--gh-fg-muted)', marginBottom: '0.35rem' }}>
+                      YOUR NAME
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Linus Torvalds"
+                      value={formData.name}
+                      onChange={e => setFormData({ ...formData, name: e.target.value })}
+                      style={{
+                        width: '100%',
+                        background: 'var(--gh-bg-inset)',
+                        border: '1px solid var(--gh-border-default)',
+                        borderRadius: '6px',
+                        padding: '0.6rem 0.85rem',
+                        color: 'var(--gh-fg-default)',
+                        fontSize: '0.85rem',
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                    MESSAGE DETAILS
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder="Hi Abhisar, I'd like to discuss a project..."
-                    value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    style={{
-                      width: '100%',
-                      background: 'var(--bg-slot)',
-                      border: '2px solid var(--border-light)',
-                      borderRadius: '8px',
-                      padding: '0.75rem 1rem',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                      resize: 'none'
-                    }}
-                  />
-                </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--gh-fg-muted)', marginBottom: '0.35rem' }}>
+                      YOUR EMAIL
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. dev@example.com"
+                      value={formData.email}
+                      onChange={e => setFormData({ ...formData, email: e.target.value })}
+                      style={{
+                        width: '100%',
+                        background: 'var(--gh-bg-inset)',
+                        border: '1px solid var(--gh-border-default)',
+                        borderRadius: '6px',
+                        padding: '0.6rem 0.85rem',
+                        color: 'var(--gh-fg-default)',
+                        fontSize: '0.85rem',
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
 
-                <button type="submit" className="mc-button mc-button-emerald" style={{ width: '100%', justifyContent: 'center' }}>
-                  <Send size={18} />
-                  <span>Transmit Message</span>
-                </button>
-              </form>
-            )}
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--gh-fg-muted)', marginBottom: '0.35rem' }}>
+                      MESSAGE
+                    </label>
+                    <textarea
+                      rows={4}
+                      required
+                      placeholder="Hi Abhisar, I'd like to discuss a web application project..."
+                      value={formData.message}
+                      onChange={e => setFormData({ ...formData, message: e.target.value })}
+                      style={{
+                        width: '100%',
+                        background: 'var(--gh-bg-inset)',
+                        border: '1px solid var(--gh-border-default)',
+                        borderRadius: '6px',
+                        padding: '0.6rem 0.85rem',
+                        color: 'var(--gh-fg-default)',
+                        fontSize: '0.85rem',
+                        outline: 'none',
+                        resize: 'none'
+                      }}
+                    />
+                  </div>
+
+                  <button type="submit" className="gh-btn gh-btn-primary" style={{ justifyContent: 'center', padding: '0.65rem' }}>
+                    <Send size={15} />
+                    <span>Send Message</span>
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
 
         </div>

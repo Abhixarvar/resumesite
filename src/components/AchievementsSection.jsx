@@ -1,15 +1,18 @@
 import React from 'react';
 import { achievementsData } from '../data/resumeData';
-import { Award, BrainCircuit, Trophy, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Award, Trophy, FolderGit2, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 const iconMap = {
-  Award, BrainCircuit, Trophy
+  Award, Trophy, FolderGit2
 };
 
 export default function AchievementsSection() {
   return (
     <section id="achievements" style={{
-      padding: '100px 0',
+      padding: '90px 0',
+      background: 'var(--gh-bg-subtle)',
+      borderTop: '1px solid var(--gh-border-default)',
+      borderBottom: '1px solid var(--gh-border-default)',
       position: 'relative'
     }}>
       <div className="container">
@@ -17,87 +20,84 @@ export default function AchievementsSection() {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <Sparkles size={14} />
-            <span>ADVANCEMENTS UNLOCKED</span>
+            <ShieldCheck size={14} />
+            <span>VERIFIED BADGES & ACCOMPLISHMENTS</span>
           </div>
           <h2 className="section-title">
-            Certifications & <span className="text-gradient-gold">Achievements</span>
+            Certifications & <span style={{ color: 'var(--gh-gold)' }}>Achievements</span>
           </h2>
           <p className="section-subtitle">
-            Recognitions earned through structured coursework, prompt engineering, and competitive programming.
+            Recognitions earned through structured coursework, competitive programming, and production web application deployments.
           </p>
         </div>
 
-        {/* Advancements Cards */}
+        {/* Achievements Cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+          gap: '1.5rem'
         }}>
           {achievementsData.map((ach, idx) => {
             const IconComp = iconMap[ach.icon] || Award;
 
             return (
-              <div key={idx} className="mc-card" style={{
-                padding: '1.75rem',
-                border: `2px solid ${ach.badgeColor}44`,
-                background: 'linear-gradient(180deg, #181D29 0%, #0F121A 100%)'
-              }}>
+              <div key={idx} className="gh-card" style={{ padding: '1.5rem' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '1rem',
-                  marginBottom: '1.25rem'
+                  gap: '0.85rem',
+                  marginBottom: '1rem'
                 }}>
-                  <div className="mc-slot" style={{
-                    width: '48px',
-                    height: '48px',
+                  <div style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '6px',
+                    background: 'var(--gh-bg-default)',
+                    border: '1px solid var(--gh-border-default)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: ach.badgeColor,
-                    borderColor: ach.badgeColor
+                    color: ach.badgeColor || 'var(--gh-gold)'
                   }}>
-                    <IconComp size={24} />
+                    <IconComp size={22} />
                   </div>
 
                   <div>
-                    <span style={{
-                      fontFamily: 'var(--font-pixel)',
-                      fontSize: '0.68rem',
-                      color: ach.badgeColor,
+                    <span className="font-mono" style={{
+                      fontSize: '0.7rem',
+                      color: ach.badgeColor || 'var(--gh-gold)',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.5px'
+                      letterSpacing: '0.3px'
                     }}>
                       {ach.type}
                     </span>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--gh-fg-muted)' }}>
                       Issuer: {ach.issuer}
                     </div>
                   </div>
                 </div>
 
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--gh-fg-heading)' }}>
                   {ach.title}
                 </h3>
 
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.86rem', color: 'var(--gh-fg-default)', lineHeight: 1.5 }}>
                   {ach.desc}
                 </p>
 
                 <div style={{
-                  marginTop: '1.25rem',
-                  paddingTop: '0.85rem',
-                  borderTop: '1px solid var(--border-light)',
+                  marginTop: '1rem',
+                  paddingTop: '0.75rem',
+                  borderTop: '1px solid var(--gh-border-muted)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  fontSize: '0.8rem',
-                  color: 'var(--emerald-green)',
-                  fontWeight: 700
+                  gap: '0.35rem',
+                  fontSize: '0.78rem',
+                  color: 'var(--gh-green-text)',
+                  fontWeight: 600
                 }}>
-                  <CheckCircle2 size={16} />
-                  <span>Advancement Completed</span>
+                  <CheckCircle2 size={15} />
+                  <span>Verified Credential</span>
                 </div>
               </div>
             );

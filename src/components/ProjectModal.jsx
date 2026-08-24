@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ExternalLink, Github, CheckCircle2, Sparkles, Terminal, Code2, Globe } from 'lucide-react';
+import { X, ExternalLink, Github, CheckCircle2, FolderGit2, Star, GitFork, Globe } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
@@ -9,129 +9,128 @@ export default function ProjectModal({ project, onClose }) {
       position: 'fixed',
       inset: 0,
       zIndex: 1100,
-      background: 'rgba(5, 7, 10, 0.85)',
+      background: 'rgba(1, 4, 9, 0.85)',
       backdropFilter: 'blur(8px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '1.5rem',
-      animation: 'fadeIn 0.2s ease'
+      animation: 'fadeIn 0.15s ease'
     }} onClick={onClose}>
       
-      <div className="mc-card" style={{
+      <div className="gh-card" style={{
         width: '100%',
         maxWidth: '650px',
         maxHeight: '90vh',
         overflowY: 'auto',
-        padding: '2rem',
-        background: '#131722',
-        border: `2px solid ${project.rarityColor}`,
-        boxShadow: `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${project.rarityColor}33`,
-        position: 'relative'
+        background: 'var(--gh-bg-subtle)',
+        border: '1px solid var(--gh-border-default)',
+        boxShadow: '0 20px 50px rgba(0,0,0,0.8)',
+        position: 'relative',
+        borderRadius: '8px'
       }} onClick={e => e.stopPropagation()}>
         
-        {/* Close Button */}
-        <button onClick={onClose} style={{
-          position: 'absolute',
-          top: '1.25rem',
-          right: '1.25rem',
-          background: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid var(--border-light)',
-          color: 'var(--text-secondary)',
-          width: '36px',
-          height: '36px',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.2s ease'
-        }}>
-          <X size={18} />
-        </button>
-
-        {/* Header Rarity Badge */}
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.4rem',
-          fontSize: '0.75rem',
-          fontFamily: 'var(--font-pixel)',
-          color: project.rarityColor,
-          background: `${project.rarityColor}15`,
-          border: `1px solid ${project.rarityColor}44`,
-          padding: '0.3rem 0.8rem',
-          borderRadius: '4px',
-          marginBottom: '1rem'
-        }}>
-          <Sparkles size={13} />
-          <span>{project.rarity} • {project.category}</span>
-        </div>
-
-        {/* Title */}
-        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.4rem' }}>
-          {project.title}
-        </h2>
-        <p style={{ color: 'var(--diamond-cyan)', fontSize: '0.95rem', fontWeight: 600, marginBottom: '1.25rem' }}>
-          {project.tagline}
-        </p>
-
-        {/* Description */}
-        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-          {project.description}
-        </p>
-
-        {/* Key Highlights List */}
-        <div style={{ marginBottom: '1.75rem' }}>
-          <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.8rem', color: 'var(--text-primary)' }}>
-            Key Quest Highlights & Features:
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            {project.highlights.map((hl, idx) => (
-              <div key={idx} className="mc-slot" style={{ padding: '0.65rem 0.85rem', display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                <CheckCircle2 size={16} color="var(--emerald-green)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{hl}</span>
-              </div>
-            ))}
+        {/* Header Box */}
+        <div className="gh-box-header" style={{ padding: '1rem 1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <FolderGit2 size={18} color="var(--gh-blue)" />
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--gh-blue)' }}>
+              {project.title}
+            </h3>
+            <span className="gh-badge-visibility">
+              {project.visibility}
+            </span>
           </div>
+
+          <button onClick={onClose} style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--gh-fg-muted)',
+            cursor: 'pointer',
+            padding: '4px',
+            borderRadius: '4px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <X size={18} />
+          </button>
         </div>
 
-        {/* Tech Stack Pills */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.6rem' }}>Tech Stack & Crafting Ingredients:</h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {project.tech.map((t, idx) => (
-              <span key={idx} style={{
-                background: '#0F121A',
-                border: '1px solid #2D3748',
-                color: 'var(--text-primary)',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                padding: '0.3rem 0.75rem',
-                borderRadius: '6px'
-              }}>
-                {t}
-              </span>
-            ))}
+        {/* Modal Body */}
+        <div style={{ padding: '1.5rem' }}>
+          {/* Tagline */}
+          <p style={{ color: 'var(--gh-blue)', fontSize: '0.9rem', fontWeight: 500, marginBottom: '1rem' }}>
+            {project.tagline}
+          </p>
+
+          {/* Description */}
+          <p style={{ color: 'var(--gh-fg-default)', lineHeight: 1.6, marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+            {project.description}
+          </p>
+
+          {/* Repo Highlights */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h4 style={{ fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--gh-fg-heading)' }}>
+              Key Features & Architecture:
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {project.highlights.map((hl, idx) => (
+                <div key={idx} style={{
+                  background: 'var(--gh-bg-inset)',
+                  border: '1px solid var(--gh-border-muted)',
+                  padding: '0.6rem 0.85rem',
+                  borderRadius: '6px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '0.6rem'
+                }}>
+                  <CheckCircle2 size={16} color="var(--gh-green-text)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <span style={{ fontSize: '0.84rem', color: 'var(--gh-fg-default)' }}>{hl}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Action Links */}
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
-          {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="mc-button mc-button-emerald">
-              <Globe size={18} />
-              <span>Launch Live App</span>
-              <ExternalLink size={14} />
-            </a>
-          )}
+          {/* Tech Stack Pills */}
+          <div style={{ marginBottom: '1.75rem' }}>
+            <h4 style={{ fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--gh-fg-heading)' }}>
+              Tech Stack & Dependencies:
+            </h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+              {project.tech.map((t, idx) => (
+                <span key={idx} style={{
+                  background: 'var(--gh-bg-inset)',
+                  border: '1px solid var(--gh-border-default)',
+                  color: 'var(--gh-fg-default)',
+                  fontSize: '0.78rem',
+                  fontWeight: 500,
+                  padding: '0.25rem 0.65rem',
+                  borderRadius: '6px'
+                }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
 
-          {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="mc-button mc-button-secondary">
-              <Github size={18} />
-              <span>GitHub Repo</span>
-            </a>
-          )}
+          {/* Action Links */}
+          <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', paddingTop: '1rem', borderTop: '1px solid var(--gh-border-default)' }}>
+            {project.live && (
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="gh-btn gh-btn-primary">
+                <Globe size={16} />
+                <span>Launch Live App</span>
+                <ExternalLink size={12} />
+              </a>
+            )}
+
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="gh-btn gh-btn-outline">
+                <Github size={16} />
+                <span>View GitHub Repository</span>
+              </a>
+            )}
+          </div>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Gamepad2, Shield, Code2, Sparkles, Send } from 'lucide-react';
+import { Github, Code2, Send, ExternalLink, GitPullRequest } from 'lucide-react';
 
 export default function Navbar({ activeSection, scrollProgress }) {
   const [scrolled, setScrolled] = useState(false);
@@ -15,66 +15,72 @@ export default function Navbar({ activeSection, scrollProgress }) {
 
   return (
     <>
-      {/* Scroll XP Bar at very top */}
+      {/* Scroll Progress Bar at very top */}
       <div style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
-        height: '4px',
-        background: '#1F2937',
+        height: '3px',
+        background: 'var(--gh-border-muted)',
         zIndex: 1000
       }}>
         <div style={{
           height: '100%',
           width: `${scrollProgress}%`,
-          background: 'linear-gradient(90deg, #10B981, #55FF55, #38BDF8)',
-          boxShadow: '0 0 10px #55FF55',
+          background: 'linear-gradient(90deg, #238636, #58a6ff, #bc8cff)',
+          boxShadow: '0 0 8px rgba(88, 166, 255, 0.5)',
           transition: 'width 0.15s ease'
         }} />
       </div>
 
       <header style={{
         position: 'fixed',
-        top: '4px',
+        top: '3px',
         left: 0,
         right: 0,
         zIndex: 900,
-        background: scrolled ? 'rgba(11, 14, 20, 0.88)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
-        transition: 'all 0.3s ease'
+        background: scrolled ? 'rgba(22, 27, 34, 0.94)' : 'var(--gh-bg-subtle)',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: '1px solid var(--gh-border-default)',
+        transition: 'all 0.2s ease'
       }}>
         <div className="container" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          height: '70px'
+          height: '62px'
         }}>
-          {/* Logo / Name & Level */}
+          {/* Logo / Handle */}
           <a href="#hero" style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.8rem',
+            gap: '0.75rem',
             textDecoration: 'none',
             color: 'inherit'
           }}>
-            <div className="mc-slot" style={{
-              width: '42px',
-              height: '42px',
+            <div style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              background: '#21262d',
+              border: '1px solid var(--gh-border-default)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'radial-gradient(circle, #2563EB 0%, #0F172A 100%)'
+              color: 'var(--gh-fg-heading)'
             }}>
-              <Code2 size={22} color="#38BDF8" />
+              <Github size={20} />
             </div>
             <div>
-              <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.3px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--gh-fg-heading)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 {personalDetails.name}
+                <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--gh-blue)', fontWeight: 400 }}>
+                  {personalDetails.handle}
+                </span>
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                Full-Stack Web Dev
+              <div style={{ fontSize: '0.75rem', color: 'var(--gh-fg-muted)' }}>
+                {personalDetails.role}
               </div>
             </div>
           </a>
@@ -83,14 +89,14 @@ export default function Navbar({ activeSection, scrollProgress }) {
           <nav style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1.8rem'
+            gap: '1.4rem'
           }} className="desktop-nav">
             {[
               { id: 'hero', label: 'Overview' },
-              { id: 'skills', label: 'Skills' },
-              { id: 'projects', label: 'Projects' },
+              { id: 'skills', label: 'Skills & Stack' },
+              { id: 'projects', label: 'Repositories' },
               { id: 'quest', label: 'Education' },
-              { id: 'achievements', label: 'Badges' },
+              { id: 'achievements', label: 'Certifications' },
               { id: 'contact', label: 'Contact' }
             ].map(link => (
               <a
@@ -98,25 +104,32 @@ export default function Navbar({ activeSection, scrollProgress }) {
                 href={`#${link.id}`}
                 style={{
                   textDecoration: 'none',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  color: activeSection === link.id ? 'var(--diamond-cyan)' : 'var(--text-secondary)',
-                  transition: 'color 0.2s ease',
+                  fontSize: '0.85rem',
+                  fontWeight: 500,
+                  color: activeSection === link.id ? 'var(--gh-fg-heading)' : 'var(--gh-fg-muted)',
+                  borderBottom: activeSection === link.id ? '2px solid #f78166' : '2px solid transparent',
+                  padding: '0.5rem 0.2rem',
+                  transition: 'color 0.2s ease, border-color 0.2s ease',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.3rem'
                 }}
               >
-                {activeSection === link.id && <span style={{ color: 'var(--emerald-green)' }}>▶</span>}
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Quick Action button */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <a href="#contact" className="mc-button mc-button-emerald" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
-              <Send size={15} />
+          {/* Quick Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <a href={personalDetails.github} target="_blank" rel="noopener noreferrer" className="gh-btn gh-btn-outline" style={{ fontSize: '0.8rem' }}>
+              <Github size={15} />
+              <span>GitHub</span>
+              <ExternalLink size={12} />
+            </a>
+
+            <a href="#contact" className="gh-btn gh-btn-primary" style={{ fontSize: '0.8rem' }}>
+              <Send size={14} />
               <span>Hire Me</span>
             </a>
           </div>
@@ -124,7 +137,7 @@ export default function Navbar({ activeSection, scrollProgress }) {
       </header>
 
       <style>{`
-        @media (max-width: 860px) {
+        @media (max-width: 900px) {
           .desktop-nav {
             display: none !important;
           }

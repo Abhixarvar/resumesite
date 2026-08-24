@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { projectsData } from '../data/resumeData';
 import ProjectModal from './ProjectModal';
-import { Sparkles, Keyboard, ShoppingBag, Terminal, Smartphone, Gamepad2, Search, ExternalLink, Github, Eye } from 'lucide-react';
+import { FolderGit2, Star, GitFork, ExternalLink, Github, Search, Eye, Terminal, Keyboard, ShoppingBag } from 'lucide-react';
 
 const iconMap = {
-  Keyboard, ShoppingBag, Terminal, Smartphone, Gamepad2
+  Keyboard, ShoppingBag, Terminal
 };
 
 export default function ProjectsSection({ onTriggerAdvancement }) {
@@ -12,7 +12,7 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModalProject, setActiveModalProject] = useState(null);
 
-  const categories = ['All', 'Web Apps', 'AI Systems', 'C++ & Tools'];
+  const categories = ['All', 'Web Apps', 'C++ & Tools'];
 
   const filteredProjects = projectsData.filter(proj => {
     const matchesCategory = selectedCategory === 'All' || proj.category === selectedCategory;
@@ -25,28 +25,29 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
   const handleCardClick = (project) => {
     setActiveModalProject(project);
     if (onTriggerAdvancement) {
-      onTriggerAdvancement(`Discovered ${project.title}!`);
+      onTriggerAdvancement(`Inspected repository: ${project.title}`);
     }
   };
 
   return (
     <section id="projects" style={{
-      padding: '100px 0',
-      position: 'relative'
+      padding: '90px 0',
+      position: 'relative',
+      background: 'var(--gh-bg-default)'
     }}>
       <div className="container">
         
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <Sparkles size={14} />
-            <span>ITEM VAULT & CREATIONS</span>
+            <FolderGit2 size={14} />
+            <span>PINNED REPOSITORIES & CREATIONS</span>
           </div>
           <h2 className="section-title">
-            Featured <span className="text-gradient-diamond">Projects</span> Inventory
+            Featured <span style={{ color: 'var(--gh-blue)' }}>Software Projects</span>
           </h2>
           <p className="section-subtitle">
-            All 5 major projects engineered using C++, HTML/CSS/JS, MongoDB, multi-model AI integrations, and Vercel hosting.
+            Curated web applications and C++ console systems engineered with HTML5, CSS3, JavaScript, MongoDB, and Vercel hosting.
           </p>
         </div>
 
@@ -56,26 +57,27 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '1.25rem',
-          marginBottom: '2.5rem'
+          gap: '1rem',
+          marginBottom: '2rem'
         }}>
           {/* Category Tabs */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 style={{
-                  fontFamily: 'var(--font-pixel)',
-                  fontSize: '0.75rem',
-                  padding: '0.5rem 1rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.82rem',
+                  fontWeight: 500,
+                  padding: '0.45rem 0.95rem',
                   borderRadius: '6px',
-                  border: '2px solid',
-                  borderColor: selectedCategory === cat ? 'var(--diamond-cyan)' : 'var(--border-light)',
-                  background: selectedCategory === cat ? 'rgba(56, 189, 248, 0.15)' : 'var(--bg-slot)',
-                  color: selectedCategory === cat ? 'var(--diamond-cyan)' : 'var(--text-secondary)',
+                  border: '1px solid',
+                  borderColor: selectedCategory === cat ? 'var(--gh-blue)' : 'var(--gh-border-default)',
+                  background: selectedCategory === cat ? 'rgba(88, 166, 255, 0.12)' : 'var(--gh-bg-subtle)',
+                  color: selectedCategory === cat ? 'var(--gh-blue)' : 'var(--gh-fg-muted)',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.15s ease'
                 }}
               >
                 {cat}
@@ -86,9 +88,9 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
           {/* Search Box */}
           <div style={{
             position: 'relative',
-            minWidth: '240px'
+            minWidth: '260px'
           }}>
-            <Search size={16} color="var(--text-muted)" style={{
+            <Search size={15} color="var(--gh-fg-muted)" style={{
               position: 'absolute',
               left: '12px',
               top: '50%',
@@ -96,16 +98,16 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
             }} />
             <input
               type="text"
-              placeholder="Search by tech or title..."
+              placeholder="Find a repository..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               style={{
                 width: '100%',
-                background: 'var(--bg-slot)',
-                border: '2px solid var(--border-light)',
-                borderRadius: '8px',
-                padding: '0.55rem 1rem 0.55rem 2.2rem',
-                color: 'var(--text-primary)',
+                background: 'var(--gh-bg-subtle)',
+                border: '1px solid var(--gh-border-default)',
+                borderRadius: '6px',
+                padding: '0.45rem 1rem 0.45rem 2.2rem',
+                color: 'var(--gh-fg-default)',
                 fontSize: '0.85rem',
                 outline: 'none'
               }}
@@ -113,11 +115,11 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Repositories Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+          gap: '1.5rem'
         }}>
           {filteredProjects.map(project => {
             const IconComp = iconMap[project.icon] || Terminal;
@@ -125,63 +127,47 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
             return (
               <div
                 key={project.id}
-                className="mc-card"
+                className="gh-card gh-card-interactive"
                 onClick={() => handleCardClick(project)}
                 style={{
-                  padding: '1.75rem',
+                  padding: '1.5rem',
                   cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  border: `2px solid ${project.rarityColor}33`,
-                  background: 'linear-gradient(180deg, #161B26 0%, #10131D 100%)'
+                  justifyContent: 'space-between'
                 }}
               >
                 <div>
-                  {/* Top Bar: Icon & Rarity Tag */}
+                  {/* Top Bar: Repo Name & Visibility Tag */}
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    marginBottom: '1.2rem'
+                    marginBottom: '0.6rem'
                   }}>
-                    <div className="mc-slot" style={{
-                      width: '46px',
-                      height: '46px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: project.rarityColor
-                    }}>
-                      <IconComp size={24} />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <FolderGit2 size={18} color="var(--gh-blue)" />
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--gh-blue)' }}>
+                        {project.title}
+                      </h3>
                     </div>
 
-                    <span style={{
-                      fontFamily: 'var(--font-pixel)',
-                      fontSize: '0.7rem',
-                      color: project.rarityColor,
-                      background: `${project.rarityColor}15`,
-                      border: `1px solid ${project.rarityColor}44`,
-                      padding: '0.25rem 0.65rem',
-                      borderRadius: '4px'
-                    }}>
-                      {project.rarity}
+                    <span className="gh-badge-visibility">
+                      {project.visibility}
                     </span>
                   </div>
 
-                  {/* Title & Tagline */}
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.35rem', color: 'var(--text-primary)' }}>
-                    {project.title}
-                  </h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--diamond-cyan)', fontWeight: 600, marginBottom: '0.85rem' }}>
+                  {/* Tagline */}
+                  <p style={{ fontSize: '0.82rem', color: 'var(--gh-fg-muted)', fontWeight: 500, marginBottom: '0.8rem' }}>
                     {project.tagline}
                   </p>
 
+                  {/* Description */}
                   <p style={{
-                    fontSize: '0.88rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.6,
-                    marginBottom: '1.5rem',
+                    fontSize: '0.86rem',
+                    color: 'var(--gh-fg-default)',
+                    lineHeight: 1.5,
+                    marginBottom: '1.25rem',
                     display: '-webkit-box',
                     WebkitLineClamp: 3,
                     WebkitBoxOrient: 'vertical',
@@ -191,22 +177,22 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
                   </p>
                 </div>
 
-                {/* Tech Pills & Details Button */}
+                {/* Tech Pills & GitHub Metadata */}
                 <div>
                   <div style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '0.4rem',
+                    gap: '0.35rem',
                     marginBottom: '1.2rem'
                   }}>
                     {project.tech.map((t, tIdx) => (
                       <span key={tIdx} style={{
                         fontSize: '0.72rem',
-                        fontWeight: 600,
-                        background: 'rgba(255,255,255,0.05)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        color: 'var(--text-secondary)',
-                        padding: '0.2rem 0.55rem',
+                        fontWeight: 500,
+                        background: 'var(--gh-bg-inset)',
+                        border: '1px solid var(--gh-border-muted)',
+                        color: 'var(--gh-fg-muted)',
+                        padding: '0.15rem 0.5rem',
                         borderRadius: '4px'
                       }}>
                         {t}
@@ -214,26 +200,44 @@ export default function ProjectsSection({ onTriggerAdvancement }) {
                     ))}
                   </div>
 
+                  {/* Bottom Stats Line */}
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    paddingTop: '0.85rem',
-                    borderTop: '1px solid var(--border-light)'
+                    paddingTop: '0.75rem',
+                    borderTop: '1px solid var(--gh-border-muted)',
+                    fontSize: '0.78rem',
+                    color: 'var(--gh-fg-muted)'
                   }}>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                      <Eye size={14} /> Click for quest log
-                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      {/* Language Indicator Dot */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                        <span style={{
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          background: project.languageColor,
+                          display: 'inline-block'
+                        }} />
+                        <span>{project.language}</span>
+                      </div>
 
-                    <span style={{
-                      fontSize: '0.8rem',
-                      fontWeight: 700,
-                      color: project.rarityColor,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.25rem'
-                    }}>
-                      Inspect →
+                      {/* Star Count */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <Star size={13} color="var(--gh-fg-muted)" />
+                        <span>{project.stars}</span>
+                      </div>
+
+                      {/* Fork Count */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <GitFork size={13} color="var(--gh-fg-muted)" />
+                        <span>{project.forks}</span>
+                      </div>
+                    </div>
+
+                    <span style={{ color: 'var(--gh-blue)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                      Details →
                     </span>
                   </div>
                 </div>

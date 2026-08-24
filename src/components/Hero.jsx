@@ -1,190 +1,45 @@
 import React from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Gamepad2, Sparkles, GraduationCap, Award, Github, Linkedin, ArrowRight, Download, Code2, Terminal } from 'lucide-react';
+import { Github, Linkedin, MapPin, Mail, FolderGit2, Code2, GraduationCap, Award, ExternalLink, GitCommit, FileCode, Check } from 'lucide-react';
 
 export default function Hero() {
   return (
     <section id="hero" style={{
-      minHeight: '100vh',
-      paddingTop: '130px',
-      paddingBottom: '80px',
-      display: 'flex',
-      alignItems: 'center',
+      paddingTop: '110px',
+      paddingBottom: '70px',
       position: 'relative',
-      overflow: 'hidden'
+      background: 'var(--gh-bg-default)'
     }}>
-      {/* Background Ambient Glows */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '10%',
-        width: '400px',
-        height: '400px',
-        background: 'radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%)',
-        pointerEvents: 'none',
-        zIndex: 0
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '10%',
-        right: '10%',
-        width: '500px',
-        height: '500px',
-        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
-        pointerEvents: 'none',
-        zIndex: 0
-      }} />
-
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="container">
+        
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '3.5rem',
-          alignItems: 'center'
-        }} className="hero-grid">
-          
-          {/* Left Column: Text Info */}
+          gridTemplateColumns: '320px 1fr',
+          gap: '2.5rem',
+          alignItems: 'start'
+        }} className="hero-github-grid">
+
+          {/* Left Column: GitHub Profile Sidebar */}
           <div>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              padding: '0.4rem 1rem',
-              borderRadius: '20px',
-              background: 'rgba(16, 185, 129, 0.1)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
-              color: 'var(--emerald-green)',
-              fontFamily: 'var(--font-pixel)',
-              fontSize: '0.75rem',
-              marginBottom: '1.2rem'
-            }}>
-              <Sparkles size={14} />
-              <span>SPAWNED IN DELHI, INDIA • BCA 2024-2027</span>
-            </div>
-
-            <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '1rem',
-              letterSpacing: '-1px'
-            }}>
-              Hi, I'm <span className="text-gradient-diamond">{personalDetails.name}</span>
-            </h1>
-
-            <div style={{
-              fontSize: '1.35rem',
-              fontWeight: 700,
-              color: 'var(--emerald-green)',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem'
-            }}>
-              <Terminal size={22} color="var(--emerald-green)" />
-              <span>{personalDetails.role}</span>
-            </div>
-
-            <p style={{
-              fontSize: '1.05rem',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.7,
-              marginBottom: '2rem',
-              background: 'rgba(19, 23, 34, 0.6)',
-              padding: '1.25rem',
-              borderRadius: '10px',
-              borderLeft: '4px solid var(--diamond-cyan)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
-            }}>
-              "{personalDetails.objective}"
-            </p>
-
-            {/* Action Buttons */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1rem',
-              marginBottom: '2.5rem'
-            }}>
-              <a href="#projects" className="mc-button mc-button-emerald">
-                <span>View Projects Inventory</span>
-                <ArrowRight size={18} />
-              </a>
-
-              <a href="#contact" className="mc-button mc-button-secondary">
-                <span>Get In Touch</span>
-              </a>
-
-              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                <a href={personalDetails.github} target="_blank" rel="noopener noreferrer" className="mc-slot" style={{
-                  width: '46px',
-                  height: '46px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#FFF',
-                  textDecoration: 'none'
-                }} title="GitHub Profile">
-                  <Github size={20} />
-                </a>
-
-                <a href={personalDetails.linkedin} target="_blank" rel="noopener noreferrer" className="mc-slot" style={{
-                  width: '46px',
-                  height: '46px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#38BDF8',
-                  textDecoration: 'none'
-                }} title="LinkedIn Profile">
-                  <Linkedin size={20} />
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Specs / Languages */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.5rem',
-              fontSize: '0.85rem',
-              color: 'var(--text-muted)'
-            }}>
-              <div><strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> English, Hindi</div>
-              <div>•</div>
-              <div><strong style={{ color: 'var(--text-primary)' }}>Location:</strong> Rohini, Delhi</div>
-            </div>
-          </div>
-
-          {/* Right Column: Player Avatar Card & Stats Grid */}
-          <div>
-            <div className="mc-card" style={{
-              padding: '2rem',
-              textAlign: 'center',
-              background: 'linear-gradient(180deg, rgba(27, 32, 45, 0.95) 0%, rgba(15, 18, 26, 0.95) 100%)',
-              borderColor: 'var(--border-accent)'
-            }}>
+            <div className="gh-card" style={{ padding: '1.5rem', textAlign: 'left' }}>
               
-              {/* Player Avatar Frame */}
+              {/* Profile Avatar Frame */}
               <div style={{
-                width: '140px',
-                height: '140px',
-                margin: '0 auto 1.5rem auto',
-                borderRadius: '20px',
-                padding: '6px',
-                background: 'linear-gradient(135deg, var(--emerald-green), var(--diamond-cyan), var(--gold-amber))',
-                boxShadow: '0 0 25px rgba(56, 189, 248, 0.3)',
+                width: '160px',
+                height: '160px',
+                margin: '0 auto 1.25rem auto',
+                borderRadius: '50%',
+                border: '2px solid var(--gh-border-default)',
+                padding: '4px',
+                background: 'var(--gh-bg-subtle)',
                 position: 'relative'
               }}>
                 <div style={{
                   width: '100%',
                   height: '100%',
-                  borderRadius: '16px',
-                  background: '#0F121A',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  overflow: 'hidden'
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  background: '#161b22'
                 }}>
                   <img 
                     src="/profile.jpg" 
@@ -198,65 +53,207 @@ export default function Hero() {
                 </div>
                 <div style={{
                   position: 'absolute',
-                  bottom: '-8px',
-                  right: '-8px',
-                  background: '#10B981',
-                  color: '#000',
-                  padding: '2px 8px',
-                  borderRadius: '10px',
-                  fontSize: '0.7rem',
-                  fontWeight: 800,
-                  fontFamily: 'var(--font-pixel)'
-                }}>
-                  READY
+                  bottom: '6px',
+                  right: '6px',
+                  background: 'var(--gh-bg-subtle)',
+                  border: '1px solid var(--gh-border-default)',
+                  borderRadius: '50%',
+                  padding: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--gh-green-text)'
+                }} title="Status: Available for web development roles">
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#3fb950', display: 'block' }} />
                 </div>
               </div>
 
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.3rem' }}>
+              {/* Name & Handle */}
+              <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--gh-fg-heading)', lineHeight: 1.2 }}>
                 {personalDetails.name}
-              </h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--diamond-cyan)', marginBottom: '1.5rem', fontFamily: 'var(--font-pixel)' }}>
-                FULL-STACK WEB DEVELOPER
+              </h1>
+              <div className="font-mono" style={{ fontSize: '0.9rem', color: 'var(--gh-fg-muted)', marginBottom: '1rem' }}>
+                {personalDetails.handle}
+              </div>
+
+              <p style={{ fontSize: '0.88rem', color: 'var(--gh-fg-default)', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+                {personalDetails.role} passionate about full-stack web applications, databases & C++ systems.
               </p>
 
-              {/* 4 Player Stats Grid */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.85rem', color: 'var(--gh-fg-muted)', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <MapPin size={16} color="var(--gh-fg-muted)" />
+                  <span>{personalDetails.location}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Mail size={16} color="var(--gh-fg-muted)" />
+                  <a href={`mailto:${personalDetails.email}`} style={{ color: 'var(--gh-fg-muted)', textDecoration: 'none' }}>
+                    {personalDetails.email}
+                  </a>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <GraduationCap size={16} color="var(--gh-fg-muted)" />
+                  <span>BCA (2024–2027)</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.5rem' }}>
+                <a href={personalDetails.github} target="_blank" rel="noopener noreferrer" className="gh-btn" style={{ flex: 1, justifyContent: 'center' }}>
+                  <Github size={16} />
+                  <span>GitHub</span>
+                </a>
+                <a href={personalDetails.linkedin} target="_blank" rel="noopener noreferrer" className="gh-btn" style={{ flex: 1, justifyContent: 'center', color: '#58a6ff' }}>
+                  <Linkedin size={16} />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+
+              {/* Quick GitHub Profile Stats */}
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: '0.8rem'
+                gap: '0.6rem',
+                paddingTop: '1rem',
+                borderTop: '1px solid var(--gh-border-default)'
               }}>
-                <div className="mc-slot" style={{ padding: '0.85rem', textAlign: 'center' }}>
-                  <div style={{ color: 'var(--emerald-green)', fontWeight: 800, fontSize: '1.25rem' }}>5+</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Projects Built</div>
-                </div>
-                
-                <div className="mc-slot" style={{ padding: '0.85rem', textAlign: 'center' }}>
-                  <div style={{ color: 'var(--diamond-cyan)', fontWeight: 800, fontSize: '1.25rem' }}>C++ & Web</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Core Focus</div>
-                </div>
-
-                <div className="mc-slot" style={{ padding: '0.85rem', textAlign: 'center' }}>
-                  <div style={{ color: 'var(--gold-amber)', fontWeight: 800, fontSize: '1.25rem' }}>BCA</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Jagannath Univ</div>
-                </div>
-
-                <div className="mc-slot" style={{ padding: '0.85rem', textAlign: 'center' }}>
-                  <div style={{ color: '#A855F7', fontWeight: 800, fontSize: '1.25rem' }}>2 Certs</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>NPTEL & Claude</div>
-                </div>
+                {personalDetails.stats.map((st, i) => (
+                  <div key={i} style={{
+                    background: 'var(--gh-bg-inset)',
+                    border: '1px solid var(--gh-border-muted)',
+                    borderRadius: '6px',
+                    padding: '0.6rem',
+                    textAlign: 'center'
+                  }}>
+                    <div style={{ color: st.color, fontWeight: 700, fontSize: '1.1rem' }}>{st.value}</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--gh-fg-muted)' }}>{st.label}</div>
+                  </div>
+                ))}
               </div>
 
             </div>
           </div>
 
+          {/* Right Column: README.md Container & Contribution Overview */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            
+            {/* README.md Container */}
+            <div className="gh-card">
+              {/* Header Box */}
+              <div className="gh-box-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--gh-fg-heading)' }}>
+                  <FileCode size={16} color="var(--gh-fg-muted)" />
+                  <span className="font-mono">AbhisarVarshney / README.md</span>
+                </div>
+                <span className="gh-tag">Special Repository</span>
+              </div>
+
+              {/* README Body Content */}
+              <div style={{ padding: '1.75rem' }}>
+                <h2 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--gh-fg-heading)', marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  👋 Hi, I'm {personalDetails.name}
+                </h2>
+
+                <p style={{ fontSize: '0.95rem', color: 'var(--gh-fg-default)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                  {personalDetails.objective}
+                </p>
+
+                {/* Quick Info Matrix */}
+                <div className="font-mono" style={{
+                  background: 'var(--gh-bg-inset)',
+                  border: '1px solid var(--gh-border-default)',
+                  borderRadius: '6px',
+                  padding: '1rem',
+                  fontSize: '0.83rem',
+                  color: 'var(--gh-fg-default)',
+                  lineHeight: 1.8,
+                  marginBottom: '1.5rem'
+                }}>
+                  <div><span style={{ color: '#ff7b72' }}>const</span> developer = &#123;</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>name: <span style={{ color: '#a5d6ff' }}>"{personalDetails.name}"</span>,</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>role: <span style={{ color: '#a5d6ff' }}>"{personalDetails.role}"</span>,</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>location: <span style={{ color: '#a5d6ff' }}>"{personalDetails.location}"</span>,</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>education: <span style={{ color: '#a5d6ff' }}>"BCA (2024-2027) @ Jagannath University"</span>,</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>stack: [<span style={{ color: '#7ee787' }}>"JavaScript"</span>, <span style={{ color: '#7ee787' }}>"HTML5/CSS3"</span>, <span style={{ color: '#7ee787' }}>"C++"</span>, <span style={{ color: '#7ee787' }}>"MongoDB"</span>, <span style={{ color: '#7ee787' }}>"Vercel"</span>],</div>
+                  <div style={{ paddingLeft: '1.2rem' }}>status: <span style={{ color: '#7ee787' }}>"Building & Deploying Web Apps"</span></div>
+                  <div>&#125;;</div>
+                </div>
+
+                {/* Hero CTAs */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
+                  <a href="#projects" className="gh-btn gh-btn-primary">
+                    <FolderGit2 size={16} />
+                    <span>Explore Repositories</span>
+                  </a>
+                  <a href="#contact" className="gh-btn gh-btn-outline">
+                    <Mail size={16} />
+                    <span>Get In Touch</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* 52-Week GitHub Contribution Activity Simulation Chart */}
+            <div className="gh-card" style={{ padding: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--gh-fg-heading)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <GitCommit size={16} color="var(--gh-green-text)" />
+                  <span>340+ Contributions in the last year</span>
+                </div>
+                <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--gh-fg-muted)' }}>Continuous Activity</span>
+              </div>
+
+              {/* Grid of green squares representing contribution heatmap */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(36, 1fr)',
+                gap: '3px',
+                overflowX: 'auto',
+                paddingBottom: '4px'
+              }}>
+                {Array.from({ length: 180 }).map((_, idx) => {
+                  // Simulate realistic contribution heat levels (0 to 4)
+                  const levels = [0, 1, 1, 2, 0, 3, 1, 4, 2, 1, 3, 0, 2, 4, 1, 2];
+                  const lvl = levels[idx % levels.length];
+                  const bgColors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
+                  
+                  return (
+                    <div 
+                      key={idx} 
+                      style={{
+                        width: '100%',
+                        aspectRatio: '1',
+                        borderRadius: '2px',
+                        background: bgColors[lvl],
+                        border: '1px solid rgba(255,255,255,0.03)'
+                      }} 
+                      title={`Activity level ${lvl}`}
+                    />
+                  );
+                })}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.4rem', marginTop: '0.6rem', fontSize: '0.72rem', color: 'var(--gh-fg-muted)' }}>
+                <span>Less</span>
+                <span style={{ width: '10px', height: '10px', background: '#161b22', borderRadius: '2px' }} />
+                <span style={{ width: '10px', height: '10px', background: '#0e4429', borderRadius: '2px' }} />
+                <span style={{ width: '10px', height: '10px', background: '#006d32', borderRadius: '2px' }} />
+                <span style={{ width: '10px', height: '10px', background: '#26a641', borderRadius: '2px' }} />
+                <span style={{ width: '10px', height: '10px', background: '#39d353', borderRadius: '2px' }} />
+                <span>More</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .hero-grid {
+        @media (max-width: 880px) {
+          .hero-github-grid {
             grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
           }
         }
       `}</style>
