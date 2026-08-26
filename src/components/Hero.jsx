@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalDetails } from '../data/resumeData';
-import { Github, Linkedin, MapPin, Mail, FolderGit2, Code2, GraduationCap, Award, ExternalLink, GitCommit, FileCode, Check } from 'lucide-react';
+import { Github, Linkedin, MapPin, Mail, FolderGit2, Code2, GraduationCap, Award, ExternalLink, GitCommit, FileCode, Check, User } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -25,8 +25,8 @@ export default function Hero() {
               
               {/* Profile Avatar Frame */}
               <div style={{
-                width: '160px',
-                height: '160px',
+                width: '140px',
+                height: '140px',
                 margin: '0 auto 1.25rem auto',
                 borderRadius: '50%',
                 border: '2px solid var(--gh-border-default)',
@@ -38,23 +38,18 @@ export default function Hero() {
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  overflow: 'hidden',
-                  background: '#161b22'
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--gh-bg-inset)',
+                  color: 'var(--gh-fg-muted)'
                 }}>
-                  <img 
-                    src="/profile.jpg" 
-                    alt="Abhisar Varshney" 
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }} 
-                  />
+                  <User size={64} strokeWidth={1.5} />
                 </div>
                 <div style={{
                   position: 'absolute',
-                  bottom: '6px',
-                  right: '6px',
+                  bottom: '4px',
+                  right: '4px',
                   background: 'var(--gh-bg-subtle)',
                   border: '1px solid var(--gh-border-default)',
                   borderRadius: '50%',
