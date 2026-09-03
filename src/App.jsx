@@ -6,6 +6,7 @@ import ProjectsSection from './components/ProjectsSection';
 import EducationTimeline from './components/EducationTimeline';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
+import ScrollReveal from './components/ScrollReveal';
 import HotbarNav from './components/HotbarNav';
 import AdvancementToast from './components/AdvancementToast';
 import { personalDetails } from './data/resumeData';
@@ -55,12 +56,12 @@ export default function App() {
 
       {/* Main Sections */}
       <main>
-        <Hero />
-        <SkillsSection />
-        <ProjectsSection onTriggerAdvancement={triggerAdvancement} />
-        <EducationTimeline />
-        <AchievementsSection />
-        <ContactSection onTriggerAdvancement={triggerAdvancement} />
+        <ScrollReveal><Hero /></ScrollReveal>
+        <ScrollReveal><SkillsSection /></ScrollReveal>
+        <ScrollReveal><ProjectsSection onTriggerAdvancement={triggerAdvancement} /></ScrollReveal>
+        <ScrollReveal><EducationTimeline /></ScrollReveal>
+        <ScrollReveal><AchievementsSection /></ScrollReveal>
+        <ScrollReveal><ContactSection onTriggerAdvancement={triggerAdvancement} /></ScrollReveal>
       </main>
 
       {/* GitHub Notification Toast */}
