@@ -23,52 +23,27 @@ export default function Hero() {
           <div>
             <div className="gh-card" style={{ padding: '1.5rem', textAlign: 'left' }}>
               
-              {/* Profile Avatar Frame */}
-              <div style={{
-                width: '140px',
-                height: '140px',
-                margin: '0 auto 1.25rem auto',
-                borderRadius: '50%',
-                border: '2px solid var(--gh-border-default)',
-                padding: '4px',
-                background: 'var(--gh-bg-subtle)',
-                position: 'relative'
-              }}>
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'var(--gh-bg-inset)',
-                  color: 'var(--gh-fg-muted)'
-                }}>
-                  <User size={64} strokeWidth={1.5} />
-                </div>
-                <div style={{
-                  position: 'absolute',
-                  bottom: '4px',
-                  right: '4px',
-                  background: 'var(--gh-bg-subtle)',
-                  border: '1px solid var(--gh-border-default)',
-                  borderRadius: '50%',
-                  padding: '4px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--gh-green-text)'
-                }} title="Status: Available for web development roles">
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#3fb950', display: 'block' }} />
-                </div>
-              </div>
-
               {/* Name & Handle */}
-              <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--gh-fg-heading)', lineHeight: 1.2 }}>
+              <h1 style={{ 
+                fontSize: '2.8rem', 
+                fontWeight: 800, 
+                color: 'var(--gh-fg-heading)', 
+                lineHeight: 1.1,
+                marginBottom: '0.2rem',
+                letterSpacing: '-1px'
+              }}>
                 {personalDetails.name}
               </h1>
-              <div className="font-mono" style={{ fontSize: '0.9rem', color: 'var(--gh-fg-muted)', marginBottom: '1rem' }}>
+              <div className="font-mono" style={{ 
+                fontSize: '1.1rem', 
+                color: 'var(--gh-green-text)', 
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
                 {personalDetails.handle}
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3fb950', display: 'block' }} title="Available for web development roles" />
               </div>
 
               <p style={{ fontSize: '0.88rem', color: 'var(--gh-fg-default)', lineHeight: 1.5, marginBottom: '1.25rem' }}>
